@@ -1,0 +1,58 @@
+<%- include('includes/head') %>
+
+  <%- include('includes/navbar') %>
+
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-8 offset-md-2 my-5">
+        <div class="row mb-5">
+          <div class="col">
+            <h1 class="text-center">Criar conta ou Entrar</h1>
+            <p class="text-center lead">Crie sua conta ou faça o login</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg mb-5 mb-lg-0">
+            <h4>Criar uma conta</h4>
+            <p>Se você ainda não tem uma conta, preencha o formulário abaixo:</p>
+
+            <form action="/login/regiter" method="POST">
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+              <div class="form-group">
+                <label for="createEmail">Email</label>
+                <input type="email" class="form-control" id="createEmail" aria-describedby="emailHelp" name="email">
+              </div>
+              <div class="form-group">
+                <label for="createSenha">Sua senha</label>
+                <input type="password" class="form-control" id="createSenha" aria-describedby="password" name="password">
+              </div>
+              <button type="submit" class="btn btn-primary">Criar conta</button>
+            </form>
+          </div>
+
+          <div class="col-lg">
+            <h4>Fazer o login</h4>
+            <p>Se você já tem uma conta, faça o login abaixo:</p>
+
+            <form action="/login/login" method="POST">
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+              <div class="form-group">
+                <label for="loginEmail">Email</label>
+                <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp" name="email">
+              </div>
+              <div class="form-group">
+                <label for="loginSenha">Sua senha</label>
+                <input type="password" class="form-control" id="loginSenha" aria-describedby="password" name="password">
+              </div>
+              <button type="submit" class="btn btn-primary">Entrar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+<%- include('includes/footer') %>
