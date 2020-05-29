@@ -12,14 +12,30 @@
         <%- include('includes/messages') %>
 
         <div class="resposive-table">
-          <table class="table my-3">
-            <tr>
-              <td>Wagner</td>
-              <td>Trevisan</td>
-              <td>199929690009</td>
-              <td>tr3visan@teste.com</td>
-            </tr>
-          </table>
+          <% if(contatos.length > 0) { %>
+            <table class="table my-3">
+              <% contatos.forEach((contato) => { %>
+                <tr>
+                  <td><%= contato.nome %></td>
+                  <td><%= contato.sobrenome %></td>
+                  <td><%= contato.telefone %></td>
+                  <td><%= contato.email %></td>
+                  <td>
+                    <a href="/contato/index/<%= contato._id %>">
+                      Editar
+                    </a>
+                  </td>
+                  <td>
+                    <a class="text-danger" href="/contato/delete/<%= contato._id %>">
+                      Excluir
+                    </a>
+                  </td>
+                </tr>
+              <% }) %>
+            </table>
+          <% } else { %>
+            <p class="text-center lead">Não exitem contatos na sua agenda.</p>
+          <% } %>
         </div>
       </div>
 

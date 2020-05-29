@@ -10,7 +10,8 @@ const mongoose = require('mongoose')
 // Iniciando a conexão com o bd que retorna uma promisse
 mongoose.connect(process.env.CONNECTIONSTRING, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useFindAndModify: false
 }).then(() => { app.emit('pronto')}).catch(e => console.log(e))
 
 
